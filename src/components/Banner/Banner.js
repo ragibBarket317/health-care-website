@@ -16,9 +16,9 @@ const Banner = () => {
                         alt="First slide"
                     />
                     <Carousel.Caption className="mb-5 pb-5">
-                        <div className="mb-5 pb-5">
-                            <h2 className="fw-bold fs-2">First slide label</h2>
-                            <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+                        <div className="mb-5 pb-5 text-color">
+                            <h2 className="fw-bold fs-1">Welcome Health Solution</h2>
+                            <p>We believe that everyone should have access to convenient, affordable, and high-quality care</p>
                         </div>
                     </Carousel.Caption>
                 </Carousel.Item>
@@ -30,9 +30,9 @@ const Banner = () => {
                     />
 
                     <Carousel.Caption className="mb-5 pb-5">
-                        <div className="mb-5 pb-5">
-                            <h2 className="fw-bold">First slide label</h2>
-                            <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+                        <div className="mb-5 pb-5 text-color">
+                            <h2 className="fw-bold fs-1">We are a one-stop-shop for your health</h2>
+                            <p>We believe that everyone should have access to convenient, affordable, and high-quality care</p>
                         </div>
                     </Carousel.Caption>
                 </Carousel.Item>
@@ -44,9 +44,9 @@ const Banner = () => {
                     />
 
                     <Carousel.Caption className="mb-5 pb-5">
-                        <div className="mb-5 pb-5">
-                            <h2 className="fw-bold">First slide label</h2>
-                            <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+                        <div className="mb-5 pb-5 text-color">
+                            <h2 className="fw-bold fs-1">Better health support</h2>
+                            <p>We believe that everyone should have access to convenient, affordable, and high-quality care</p>
                         </div>
                     </Carousel.Caption>
                 </Carousel.Item>

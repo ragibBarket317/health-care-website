@@ -1,0 +1,11 @@
+.login {
+    padding: 26px 15px;
+    border: 1px solid black;
+    background-color: rgb(241, 236, 236);
+}
+.img-size{
+    height: 90vh;
+}
+.img-field {
+    padding-right: 15px;
+}
