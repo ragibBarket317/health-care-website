@@ -14,7 +14,9 @@ const Service = ({ service }) => {
                         {describe}
                     </Card.Text>
                 </Card.Body>
-                <Link to={`details/${id}`}><button className="btn btn-primary w-50 mx-auto my-3">View Details</button></Link>
+                <div className="text-center">
+                    <Link to={`details/${id}`}><button className="w-50 btn btn-primary my-3">View Details</button></Link>
+                </div>
             </Card>
         </Col>
     );
