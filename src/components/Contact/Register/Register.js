@@ -1,12 +1,24 @@
 import React from 'react';
 import banner1 from '../../../images/banner/banner1.jpg';
 import { Form } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useHistory } from 'react-router-dom';
 import './Register.css';
 import useAuth from '../../../hooks/useAuth';
 
 const Register = () => {
-    const { signInUsingGoogle, registerUsingEmailPassword, handleEmail, handlePassword, handleNameChange } = useAuth();
+    const { signInUsingGoogle, registerUsingEmailPassword, handleEmail, handlePassword, handleNameChange, setUserName } = useAuth();
+    const location = useLocation();
+    const history = useHistory();
+    const redirect_uri = location.state?.from || '/login';
+
+    const emailPasswordRegister = () => {
+        registerUsingEmailPassword()
+            .then((result) => {
+                history.push(redirect_uri)
+                setUserName()
+                alert('Registration Successful. Please Login')
+            })
+    }
     return (
         <div className="container py-5">
             <div className="row">
@@ -28,11 +40,10 @@ const Register = () => {
                             <Form.Label>Password</Form.Label>
                             <Form.Control onBlur={handlePassword} type="password" placeholder="Password" />
                         </Form.Group>
-                        <button onClick={registerUsingEmailPassword} className="btn btn-primary w-100 mt-2" type="submit">Register</button><br />
+                        <button onClick={emailPasswordRegister} className="btn btn-primary w-100 mt-2" type="submit">Register</button><br />
                         <p className="text-center mt-3">--------------------OR----------------------</p>
                         <div className="text-center mt-2">
                             <button onClick={signInUsingGoogle} className="btn btn-warning w-lg-25 mx-3" type="submit">Google Sign in</button>
-                            <button className="btn btn-danger w-lg-25" type="submit">GitHub Sign in</button>
                             <p>already have an account? please <Link to="/login">login</Link></p>
                         </div>
                     </div>

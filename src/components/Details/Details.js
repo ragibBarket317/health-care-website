@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
+import { Button } from 'react-bootstrap';
 import { useParams } from 'react-router';
+import { Link } from 'react-router-dom';
 
 const Details = () => {
     const { id } = useParams();
@@ -24,6 +26,9 @@ const Details = () => {
                 <img class="w-100" src={singleService?.img} alt="" />
                 <h1 className="text-center my-3">{singleService?.title}</h1>
                 <p class="fs-5">{singleService?.details}</p>
+                <div className="text-center my-4">
+                    <Link to="/contact"><Button className="btn btn-primary">Appointment Book</Button></Link>
+                </div>
             </div>
         </div>
     );

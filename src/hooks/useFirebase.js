@@ -16,36 +16,28 @@ const useFirebase = () => {
 
     const signInUsingGoogle = () => {
         setIsLoading(true);
-        signInWithPopup(auth, googleProvider)
-            .then((result) => {
-                setUser(result.user)
-            })
-            .finally(() => setIsLoading(false));
+        return signInWithPopup(auth, googleProvider);
+
     }
 
     const registerUsingEmailPassword = () => {
-        createUserWithEmailAndPassword(auth, email, password)
-            .then((result) => {
-                const user = result.user;
-                console.log(user);
-                setUserName();
-                alert('Registration Successful')
-            })
+        setIsLoading(true);
+        return createUserWithEmailAndPassword(auth, email, password);
+
+
     }
 
     const setUserName = () => {
+        setIsLoading(true);
         updateProfile(auth.currentUser, {
             displayName: name
-        }).then(() => { })
+        }).then(() => { }).finally(() => setIsLoading(false));
     }
 
     const signInUsingEmailPassword = () => {
-        signInWithEmailAndPassword(auth, email, password)
-            .then((result) => {
-                const user = result.user;
-                console.log(user)
-                alert('Login Successful')
-            })
+        setIsLoading(true);
+        return signInWithEmailAndPassword(auth, email, password);
+
     }
     const handleNameChange = (e) => {
         setName(e.target.value);
@@ -74,7 +66,7 @@ const useFirebase = () => {
     }, [])
 
     const logOut = () => {
-        setIsLoading(true);
+        setIsLoading(true)
         signOut(auth)
             .then(() => { })
             .finally(() => setIsLoading(false));
@@ -85,6 +77,7 @@ const useFirebase = () => {
         signInUsingGoogle,
         signInUsingEmailPassword,
         registerUsingEmailPassword,
+        setUserName,
         handleNameChange,
         handleEmail,
         handlePassword,

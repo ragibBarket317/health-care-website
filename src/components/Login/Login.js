@@ -1,6 +1,6 @@
 import React from 'react';
 import { Form } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useHistory } from 'react-router-dom';
 import useAuth from '../../hooks/useAuth';
 import banner1 from '../../images/banner/banner1.jpg';
 import './Login.css';
@@ -8,6 +8,23 @@ import './Login.css';
 
 const Login = () => {
     const { signInUsingGoogle, handlePassword, signInUsingEmailPassword, handleEmail } = useAuth();
+    const location = useLocation();
+    const history = useHistory();
+    const redirect_uri = location.state?.from || '/home';
+
+    const googleLogin = () => {
+        signInUsingGoogle()
+            .then((result) => {
+                history.push(redirect_uri)
+            })
+    }
+    const emailPasswordLogin = () => {
+        signInUsingEmailPassword()
+            .then((result) => {
+                history.push(redirect_uri)
+                alert('Login Successful')
+            })
+    }
     return (
         <div className="container py-5">
             <div className="row">
@@ -25,10 +42,10 @@ const Login = () => {
                             <Form.Label>Password</Form.Label>
                             <Form.Control onBlur={handlePassword} type="password" placeholder="Password" />
                         </Form.Group>
-                        <button onClick={signInUsingEmailPassword} className="btn btn-primary w-100 mt-5" type="submit">Login</button><br />
+                        <button onClick={emailPasswordLogin} className="btn btn-primary w-100 mt-5" type="submit">Login</button><br />
                         <p className="text-center mt-3">--------------------OR----------------------</p>
                         <div className="text-center mt-2">
-                            <button onClick={signInUsingGoogle} className="btn btn-warning w-lg-25 mx-3" type="submit">Google Sign in</button>
+                            <button onClick={googleLogin} className="btn btn-warning w-lg-25 mx-3" type="submit">Google Sign in</button>
                             <p>new user? please <Link to="/register">register</Link></p>
                         </div>
                     </div>
