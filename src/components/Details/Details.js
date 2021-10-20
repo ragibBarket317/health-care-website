@@ -21,9 +21,9 @@ const Details = () => {
     return (
         <div className="container py-3">
             <div>
-                <img class="w-100" src={singleService.img} alt="" />
-                <h1 className="text-center my-3">{singleService.title}</h1>
-                <p class="fs-5">{singleService.details}</p>
+                <img class="w-100" src={singleService?.img} alt="" />
+                <h1 className="text-center my-3">{singleService?.title}</h1>
+                <p class="fs-5">{singleService?.details}</p>
             </div>
         </div>
     );
