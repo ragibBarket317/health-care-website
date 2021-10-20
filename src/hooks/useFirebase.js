@@ -29,6 +29,7 @@ const useFirebase = () => {
                 const user = result.user;
                 console.log(user);
                 setUserName();
+                alert('Registration Successful')
             })
     }
 
@@ -43,17 +44,20 @@ const useFirebase = () => {
             .then((result) => {
                 const user = result.user;
                 console.log(user)
+                alert('Login Successful')
             })
     }
     const handleNameChange = (e) => {
         setName(e.target.value);
+        console.log(e.target.value)
     }
     const handleEmail = (e) => {
         setEmail(e.target.value);
-        setEmail('');
+        console.log(e.target.value);
     }
     const handlePassword = (e) => {
         setPassword(e.target.value)
+        console.log(e.target.value)
     }
 
     useEffect(() => {
