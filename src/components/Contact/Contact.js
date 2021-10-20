@@ -11,20 +11,16 @@ const Contact = () => {
             <h1 className="text-center py-3">Appointment Book</h1>
             <div className="container py-3">
                 <div className="row">
-                    <di className="col-lg-6">
-                        <img src={banner7} alt="" />
+                    <di className="col-lg-6 col-12 mb-4 mb-lg-0">
+                        <img className="contact-img img-fluid" src={banner7} alt="" />
                     </di>
-                    <div className="col-lg-6">
-                        <Form>
+                    <div className="col-lg-6 col-12">
+                        <Form className="py-5 form-color px-4">
+                            <h5 className="mb-3">Please fillup this form</h5>
                             <Row className="mb-3">
-                                <Form.Group as={Col} controlId="formGridEmail">
+                                <Form.Group controlId="formGridEmail">
                                     <Form.Label>Email</Form.Label>
                                     <Form.Control type="email" placeholder="Enter email" />
-                                </Form.Group>
-
-                                <Form.Group as={Col} controlId="formGridPassword">
-                                    <Form.Label>Password</Form.Label>
-                                    <Form.Control type="password" placeholder="Password" />
                                 </Form.Group>
                             </Row>
 
@@ -34,7 +30,7 @@ const Contact = () => {
                             </Form.Group>
 
                             <Form.Group className="mb-3" controlId="formGridAddress2">
-                                <Form.Label>Address 2</Form.Label>
+                                <Form.Label>Address</Form.Label>
                                 <Form.Control placeholder="Apartment, studio, or floor" />
                             </Form.Group>
 
@@ -45,16 +41,15 @@ const Contact = () => {
                                 </Form.Group>
 
                                 <Form.Group as={Col} controlId="formGridState">
-                                    <Form.Label>State</Form.Label>
-                                    <Form.Select defaultValue="Choose...">
-                                        <option>Choose...</option>
-                                        <option>...</option>
+                                    <Form.Label>Appoint For</Form.Label>
+                                    <Form.Select defaultValue="Dialysis">
+                                        <option>Dialysis</option>
+                                        <option>MRI</option>
+                                        <option>Child Care</option>
+                                        <option>X-RAY</option>
+                                        <option>Pregnency</option>
+                                        <option>Dental</option>
                                     </Form.Select>
-                                </Form.Group>
-
-                                <Form.Group as={Col} controlId="formGridZip">
-                                    <Form.Label>Zip</Form.Label>
-                                    <Form.Control />
                                 </Form.Group>
                             </Row>
 
@@ -62,8 +57,8 @@ const Contact = () => {
                                 <Form.Check type="checkbox" label="Check me out" />
                             </Form.Group>
 
-                            <Button variant="primary" type="submit">
-                                Submit
+                            <Button variant="primary w-100" type="submit">
+                                Booking
                             </Button>
                         </Form>
                     </div>

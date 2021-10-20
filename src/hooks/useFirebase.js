@@ -2,29 +2,30 @@ import { getAuth, signInWithPopup, GoogleAuthProvider, signOut, onAuthStateChang
 import { useEffect, useState } from "react";
 import firebaseInitialize from "../firebase/firebase.initialize";
 
+//Call Firebase Initialization
 firebaseInitialize();
 
+// Create Custom Hook
 const useFirebase = () => {
     const [name, setName] = useState('');
     const [user, setUser] = useState({});
     const [email, setEmail] = useState('');
+    const [error, setError] = useState('');
     const [password, setPassword] = useState('');
     const [isLoading, setIsLoading] = useState(true);
 
     const auth = getAuth();
     const googleProvider = new GoogleAuthProvider();
-
+    // Google Authentication
     const signInUsingGoogle = () => {
         setIsLoading(true);
         return signInWithPopup(auth, googleProvider);
 
     }
-
+    // Email Password Authentication
     const registerUsingEmailPassword = () => {
         setIsLoading(true);
         return createUserWithEmailAndPassword(auth, email, password);
-
-
     }
 
     const setUserName = () => {
@@ -51,7 +52,7 @@ const useFirebase = () => {
         setPassword(e.target.value)
         console.log(e.target.value)
     }
-
+    // State Change Authentication
     useEffect(() => {
         const unsubscribed = onAuthStateChanged(auth, user => {
             if (user) {
@@ -64,7 +65,7 @@ const useFirebase = () => {
         });
         return () => unsubscribed;
     }, [])
-
+    // Log Out Authentication
     const logOut = () => {
         setIsLoading(true)
         signOut(auth)
@@ -74,6 +75,9 @@ const useFirebase = () => {
 
     return {
         user,
+        error,
+        password,
+        setError,
         signInUsingGoogle,
         signInUsingEmailPassword,
         registerUsingEmailPassword,

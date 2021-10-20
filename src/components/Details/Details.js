@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Button } from 'react-bootstrap';
 import { useParams } from 'react-router';
 import { Link } from 'react-router-dom';
-
+// Service Details Page
 const Details = () => {
     const { id } = useParams();
     const [services, setServices] = useState([]);
@@ -16,6 +16,7 @@ const Details = () => {
             .then(data => setServices(data))
 
     }, [])
+    // Find Single Service
     useEffect(() => {
         const result = services ? services.find(td => td.id == id) : []
         setSingleService(result);

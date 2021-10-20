@@ -1,7 +1,7 @@
 import React from 'react';
 import { Card, Col } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
-
+// Services Section
 const Service = ({ service }) => {
     const { id, img, title, describe } = service;
     return (

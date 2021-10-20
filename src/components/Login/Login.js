@@ -7,22 +7,31 @@ import './Login.css';
 
 
 const Login = () => {
-    const { signInUsingGoogle, handlePassword, signInUsingEmailPassword, handleEmail } = useAuth();
+    const { signInUsingGoogle, handlePassword, signInUsingEmailPassword, handleEmail, error, setError, password } = useAuth();
     const location = useLocation();
     const history = useHistory();
     const redirect_uri = location.state?.from || '/home';
-
+    // Google Redirect process
     const googleLogin = () => {
         signInUsingGoogle()
             .then((result) => {
                 history.push(redirect_uri)
             })
     }
+    // Email Password Redirect Process
     const emailPasswordLogin = () => {
+        if (password.length < 6) {
+            setError('please enter at least 6 charectar')
+            return;
+        }
         signInUsingEmailPassword()
             .then((result) => {
                 history.push(redirect_uri)
+                setError('')
                 alert('Login Successful')
+            })
+            .catch((error) => {
+                setError(error.message)
             })
     }
     return (
@@ -36,12 +45,13 @@ const Login = () => {
                         <h2 className="mb-3">Please Login</h2>
                         <Form.Group className="mb-3" controlId="formGroupEmail">
                             <Form.Label>Email address</Form.Label>
-                            <Form.Control onBlur={handleEmail} type="email" placeholder="Enter email" />
+                            <Form.Control onBlur={handleEmail} type="email" placeholder="Enter email" required />
                         </Form.Group>
                         <Form.Group className="mb-3" controlId="formGroupPassword">
                             <Form.Label>Password</Form.Label>
-                            <Form.Control onBlur={handlePassword} type="password" placeholder="Password" />
+                            <Form.Control onBlur={handlePassword} type="password" placeholder="Password" required />
                         </Form.Group>
+                        <p className="text-danger">{error}</p>
                         <button onClick={emailPasswordLogin} className="btn btn-primary w-100 mt-5" type="submit">Login</button><br />
                         <p className="text-center mt-3">--------------------OR----------------------</p>
                         <div className="text-center mt-2">

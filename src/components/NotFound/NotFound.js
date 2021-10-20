@@ -1,5 +1,5 @@
 import React from 'react';
-
+// Note Found Page
 const NotFound = () => {
     return (
         <div className="d-flex justify-content-center align-item-center py-5 my-5">
